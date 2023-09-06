@@ -1,0 +1,40 @@
+diff --git a/net/socket.c b/net/socket.c
+index 7f64a6eccf63..3242b470275a 100644
+--- a/net/socket.c
++++ b/net/socket.c
+@@ -1802,7 +1802,7 @@ int __sys_accept4_file(struct file *file, unsigned file_flags,
+ {
+ 	struct file *newfile;
+ 	int newfd;
+-
++	printk(KERN_INFO "Hello! modified kernel accept");
+ 	if (flags & ~(SOCK_CLOEXEC | SOCK_NONBLOCK))
+ 		return -EINVAL;
+ 
+@@ -1840,7 +1840,7 @@ int __sys_accept4(int fd, struct sockaddr __user *upeer_sockaddr,
+ {
+ 	int ret = -EBADF;
+ 	struct fd f;
+-
++	printk(KERN_INFO "Hello! modified kernel accept 2");
+ 	f = fdget(fd);
+ 	if (f.file) {
+ 		ret = __sys_accept4_file(f.file, 0, upeer_sockaddr,
+@@ -1881,7 +1881,7 @@ int __sys_connect_file(struct file *file, struct sockaddr_storage *address,
+ {
+ 	struct socket *sock;
+ 	int err;
+-
++	printk(KERN_INFO "Hello! modified kernel connect");
+ 	sock = sock_from_file(file);
+ 	if (!sock) {
+ 		err = -ENOTSOCK;
+@@ -1903,7 +1903,7 @@ int __sys_connect(int fd, struct sockaddr __user *uservaddr, int addrlen)
+ {
+ 	int ret = -EBADF;
+ 	struct fd f;
+-
++	printk(KERN_INFO "Hello! modified kernel connect 2");
+ 	f = fdget(fd);
+ 	if (f.file) {
+ 		struct sockaddr_storage address;

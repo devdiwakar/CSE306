@@ -1,0 +1,15 @@
+git clone https://github.com/torvalds/linux.git
+cd linux
+sudo apt-get install git fakeroot build-essential ncurses-dev xz-utils libssl-dev bc flex libelf-dev bison
+git checkout v5.15
+make localmodconfig
+change in the config file the local string. CONFIG_DEBUG_INFO_BTF = n CONFIG_SYSTEM_REVOCATION_KEYS = ""
+make -j4
+CONFIG_DEBUG_INFO_BTF = n
+sudo apt-get install build-essential libncurses-dev bison flex libssl-dev libelf-dev
+
+
+
+sudo make modules_install and make modules difference
+
+Ubuntu, with Linux 5.15.0-cse306_dev
